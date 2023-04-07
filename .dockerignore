@@ -1,0 +1,10 @@
+containers
+.editorconfig
+.git
+.flake8
+docker-compose.yml
+Dockerfile
+LICENSE
+package*
+README.md
+requirements*
