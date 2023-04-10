@@ -3,16 +3,23 @@ version: '3'
 services:
   web:
     restart: always
-    build: .
+    image: explain:latest
     ports:
-      - "5000:5000"
-    links:
-      - postgres:postgres
+      - "8000:8000"
     volumes:
       - .:/app
     environment:
       DB_SERVICE: postgres
-      DEBUG: 1
+
+  migrate:
+    restart: "no"
+    image: explain:latest
+    command:
+      - "flask"
+      - "db"
+      - "upgrade"
+    environment:
+      DB_SERVICE: postgres
 
   postgres:
     restart: always
